@@ -1,0 +1,17 @@
+# Node.js: dependències (no pugis mai node_modules)
+node_modules/
+
+# Variables d'entorn: contenen secrets (API keys, DB pwd…)
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Sistema operatiu
+.DS_Store
+Thumbs.db
+
+# Build de producció (React, etc.)
+build/
+dist/

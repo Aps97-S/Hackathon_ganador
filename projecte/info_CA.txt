@@ -1,0 +1,39 @@
+===========================================================
+  ESTRUCTURA DEL PROJECTE - Hackathon guanyador
+===========================================================
+  Comentaris en català (autoria: altres idiomes possibles)
+===========================================================
+
+/
+├── package.json         -> Scripts globals (npm run dev, build, start)
+├── .env                 -> Variables d'entorn (NO es commiteja)
+├── .env.example         -> Plantilla del .env (SÍ es commiteja)
+├── .gitignore           -> Fitxers que git ha d'ignorar
+├── info_CA.txt          -> Aquest fitxer
+
+frontend/
+├── public/              -> Fitxers estàtics (favicon, index.html)
+└── src/
+    ├── components/      -> Components React reutilitzables (Botó, Card, Input...)
+    ├── pages/           -> Components de pàgina/vistes (Home, Login, Dashboard)
+    ├── hooks/           -> Custom hooks de React (useAuth, useFetch...)
+    ├── services/        -> Crides a l'API del backend (axios/fetch)
+    ├── utils/           -> Funcions auxiliars (validacions, formateig...)
+    ├── styles/          -> Fitxers CSS, SASS o estils globals
+    ├── context/         -> Contexts de React per a estat global (AuthContext, Theme...)
+    └── assets/          -> Imatges, fonts, icones, etc.
+
+backend/
+└── src/
+    ├── routes/          -> Definició de rutes Express (GET /api/usuaris...)
+    ├── controllers/     -> Lògica dels handlers (reben request, retornen response)
+    ├── models/          -> Models de dades (consultes SQL, ORM...)
+    ├── middleware/       -> Middleware personalitzat (auth, errors, logs...)
+    ├── services/        -> Lògica de negoci (regles, càlculs...)
+    ├── utils/           -> Funcions auxiliars
+    └── config/          -> Configuració (DB, variables d'entorn...)
+
+database/
+├── migrations/          -> Migracions de la BD (canvis estructurals)
+├── seeds/               -> Dades de prova per a la BD
+└── schema.sql           -> Esquema complet de la base de dades
