@@ -1,0 +1,29 @@
+{
+  "name": "hackathon_ganador",
+  "version": "1.0.0",
+  "description": "CIFO_hackaton project",
+  "keywords": [
+    "CIFO",
+    "hackaton",
+    "sql",
+    "API",
+    "sequelise",
+    "react",
+    "finntech"
+  ],
+  "homepage": "https://github.com/Aps97-S/Hackathon_ganador#readme",
+  "bugs": {
+    "url": "https://github.com/Aps97-S/Hackathon_ganador/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aps97-S/Hackathon_ganador.git"
+  },
+  "license": "ISC",
+  "author": "Nosaltres",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"test no definit encara\""
+  }
+}
