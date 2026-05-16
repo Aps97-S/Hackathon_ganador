@@ -45,8 +45,7 @@ servidor.get('/health', (req, res) => {
 async function startServer() {
   try {
     await initDatabase();
-    await sequelize.sync({ alter: true });
-    console.log('DB conectada correctamente');
+    console.log('DB conectada correctamente');  
   } catch (err) {
     console.error('Error inicializando DB:', err);
     process.exit(1);

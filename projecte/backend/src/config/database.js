@@ -4,7 +4,7 @@ const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_HOST = process.env.DB_HOST;
-const DB_PORT= process.env.DB_PORT || 3306;
+const DB_PORT = process.env.DB_PORT || 3306;
 
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
   host: DB_HOST,
@@ -25,21 +25,21 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
 });
 
 async function ensureDatabaseExists() {
-  try{
-  const mysql = require("mysql2/promise");
-  const connection = await mysql.createConnection({
-    host: DB_HOST,
-    port: DB_PORT,
-    user: DB_USER,
-    password: DB_PASSWORD,
-  });
+  try {
+    const mysql = require("mysql2/promise");
+    const connection = await mysql.createConnection({
+      host: DB_HOST,
+      port: DB_PORT,
+      user: DB_USER,
+      password: DB_PASSWORD,
+    });
 
-  await connection.query(
-    `CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
-  );
-  await connection.end();
+    await connection.query(
+      `CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
+    );
+    await connection.end();
 
-  console.log(`Base de datos "${DB_NAME}" verificada / creada.`);
+    console.log(`Base de datos "${DB_NAME}" verificada / creada.`);
   } catch (err) {
     console.error("Error creando/verificando DB:", err);
     throw err;
@@ -52,10 +52,13 @@ async function initDatabase() {
   try {
     await sequelize.authenticate();
     console.log("Conexión a DB OK");
+    require('../models');
+    await sequelize.sync({ alter: true });
+    console.log("Modelos sincronizados");
   } catch (err) {
     console.error("Error conectando Sequelize:", err);
     throw err;
   }
-}  
+}
 
-module.exports = { sequelize , initDatabase , ensureDatabaseExists };
+module.exports = { sequelize, initDatabase, ensureDatabaseExists };
