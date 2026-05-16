@@ -17,16 +17,14 @@ const Alertas = sequelize.define('Alertas', {
     }
   },
 
-  precio_objetivo: {
+  precio_maximo: {
     type: DataTypes.FLOAT,
-    allowNull: false
+    allowNull: true
   },
-
-  condicion: {
-    type: DataTypes.ENUM('sobre', 'debajo'),
-    allowNull: false
+  precio_minimo: {
+    type: DataTypes.FLOAT,
+    allowNull: true
   },
-
   ultima_alerta: {
     type: DataTypes.DATE,
     allowNull: true
@@ -37,7 +35,19 @@ const Alertas = sequelize.define('Alertas', {
     defaultValue: true
   }
 }, {
-  tableName: 'alertas'
+  tableName: 'alertas',
+  validate: {
+    minOrMaxRequired() {
+      if (
+        this.precio_minimo == null &&
+        this.precio_maximo == null
+      ) {
+        throw new Error(
+          "Hi ha d'haver un preu mínim o màxim"
+        );
+      }
+    }
+  }
 });
 
 module.exports = Alertas;
