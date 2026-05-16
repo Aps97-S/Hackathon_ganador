@@ -1,4 +1,3 @@
-// BDDD para guardar simulaciones hechas (no necesario aun)
 const { DataTypes } = require('sequelize');
 const { sequelize } = require('../config/database');
 
@@ -8,7 +7,14 @@ const Simulaciones = sequelize.define('Simulaciones', {
     primaryKey: true,
     autoIncrement: true
   },
-
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  divisa_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   importe_inicial: {
     type: DataTypes.FLOAT,
     allowNull: false
@@ -19,12 +25,12 @@ const Simulaciones = sequelize.define('Simulaciones', {
     allowNull: false
   },
 
-  precio_btc_inicial: {
+  precio_inicial: {
     type: DataTypes.FLOAT,
     allowNull: false
   },
 
-  precio_btc_final: {
+  precio_final: {
     type: DataTypes.FLOAT,
     allowNull: false
   },
@@ -39,7 +45,10 @@ const Simulaciones = sequelize.define('Simulaciones', {
     allowNull: false
   }
 }, {
-  tableName: 'simulaciones'
+  tableName: 'simulaciones',
+  timestamps: true,
+  createdAt: "created_at",
+  updatedAt: false
 });
 
 module.exports = Simulaciones;
