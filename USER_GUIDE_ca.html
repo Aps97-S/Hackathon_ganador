@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock & Cryptocurrency Tracker - Guia d'Usuari</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock & Cryptocurrency Tracker - Guia d'Usuari</h1>
+        
+        <div class="section">
+            <h2>Visió General</h2>
+            <p>Aquesta aplicació proporciona un tauler de seguiment en temps real per a preus d'accions i criptomonedes. Els usuaris poden seleccionar els seus actius preferits, establir alertes de compra/venda i monitoritzar els moviments de preus amb indicadors visuals.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Característiques</h2>
+            
+            <ul>
+                <li><strong>Seguiment de Preus en Temps Real</strong>: Actualitzacions en viu dels accions i criptomonedes seleccionats</li>
+                <li><strong>Selecció d'Actius</strong>: Tria entre accions populars (Apple, Google, Microsoft, Amazon, Tesla) i criptomonedes (Bitcoin, Ethereum, Ripple, Litecoin, Cardano)</li>
+                <li><strong>Sistema d'Alerta</strong>: Estableix límits de compra/venda amb notificacions visuals</li>
+                <li><strong>Disseny Responsiu</strong>: Funciona en dispositius d'escriptori i mòbils</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Com Engegar</h2>
+            
+            <ol>
+                <li><strong>Prerequisits</strong>:
+                    <ul>
+                        <li>Navegador web modern (Chrome, Firefox, Safari, Edge)</li>
+                        <li>No es requereix instal·lació de programari addicional</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Executant l'Aplicació</strong>:
+                    <ul>
+                        <li>Obre <code>index.html</code> en qualsevol navegador web</li>
+                        <li>El tauler es carregarà automàticament</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Utilitzant el Tauler</h2>
+            
+            <h3>1. Selecció d'Actius</h3>
+            <ul>
+                <li>Selecciona accions o criptomonedes dels menús desplegables</li>
+                <li>Fes clic a "Actualitzar Selecció" per aplicar les teves opcions</li>
+                <li>Els actius seleccionats apareixeran a la secció de seguiment a continuació</li>
+            </ul>
+            
+            <h3>2. Seguiment de Preus</h3>
+            <ul>
+                <li>Els preus s'actualitzen cada 3 segons amb fluctuacions simulades</li>
+                <li>Indicadors verds mostren augment de preus</li>
+                <li>Indicadors vermells mostren disminució de preus</li>
+            </ul>
+            
+            <h3>3. Establint Alertes</h3>
+            <ul>
+                <li>Introdueix un preu objectiu al camp "Establir Alerta"</li>
+                <li>Tria tipus "Compra" o "Venda"</li>
+                <li>Fes clic a "Establir Alerta" per crear una nova alerta</li>
+                <li>Les alertes es mostraran amb notificacions visuals quan s'activin</li>
+            </ul>
+            
+            <h3>4. Gestió d'Alertes</h3>
+            <ul>
+                <li>Fes clic al botó "Eliminar" al costat de qualsevol alerta per suprimir-la</li>
+                <li>Totes les alertes es guarden a l'emmagatzematge local del navegador</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Components de la Interfície</h2>
+            
+            <h3>Secció de Capçalera</h3>
+            <ul>
+                <li>Títol i descripció de l'aplicació</li>
+            </ul>
+            
+            <h3>Secció de Selecció d'Actius</h3>
+            <ul>
+                <li>Menús desplegables per seleccionar accions i criptomonedes</li>
+                <li>Botó d'actualització per aplicar les seleccions</li>
+            </ul>
+            
+            <h3>Secció de Seguiment en Vida</h3>
+            <ul>
+                <li>Mostra els preus actuals dels actius seleccionats</li>
+                <li>Mostra els canvis de preu amb indicadors visuals</li>
+            </ul>
+            
+            <h3>Secció d'Alertes</h3>
+            <ul>
+                <li>Llista totes les alertes de compra/venda actives</li>
+                <li>Mostra preus objectiu i tipus d'alerta</li>
+                <li>Notificacions visuals quan s'assolixin els objectius</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Solucionador de Problemes</h2>
+            
+            <h3>Problemes Comuns</h3>
+            
+            <ol>
+                <li><strong>Els preus no s'actualitzen</strong>:
+                    <ul>
+                        <li>Assegura't d'estar utilitzant un navegador modern</li>
+                        <li>Comprova que JavaScript estigui habilitat al teu navegador</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Les alertes no apareixen</strong>:
+                    <ul>
+                        <li>Verifica que el preu objectiu s'hagi establert correctament</li>
+                        <li>Comprova que els preus dels actius estiguin fluctuant</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Problemes de compatibilitat amb el navegador</strong>:
+                    <ul>
+                        <li>Intenta obrir-ho en un navegador diferent</li>
+                        <li>Assegura't que el teu navegador estigui actualitzat</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Detalls Tècnics</h2>
+            
+            <h3>Fitxers Inclòs</h3>
+            <ul>
+                <li><code>index.html</code>: Estructura HTML principal</li>
+                <li><code>styles.css</code>: Estil i disseny responsive</li>
+                <li><code>script.js</code>: Funcionalitat JavaScript per actualitzacions en temps real i alertes</li>
+            </ul>
+            
+            <h3>Com Funciona</h3>
+            <ul>
+                <li>Actualitzacions de preus en temps real simulades utilitzant JavaScript</li>
+                <li>Emmagatzematge local del navegador per persistència d'alertes</li>
+                <li>Disseny CSS Grid responsive per compatibilitat amb mòbils</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Millores Futures</h2>
+            
+            <ol>
+                <li>Integració amb APIs finances reals</li>
+                <li>Sistema d'autenticació d'usuaris</li>
+                <li>Capacitats de notificació per correu electrònic/SMS</li>
+                <li>Funcions avançades de gràfiques</li>
+                <li>Funcionalitat de seguiment de carteres</li>
+                <li>Compatibilitat multilingüe</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

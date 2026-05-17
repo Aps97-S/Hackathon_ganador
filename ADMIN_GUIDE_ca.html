@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock & Cryptocurrency Tracker - Guia d'Administrador</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock & Cryptocurrency Tracker - Guia d'Administrador</h1>
+        
+        <div class="section">
+            <h2>Visió General</h2>
+            <p>Aquesta guia proporciona instruccions als administradors del sistema per a desplegar, mantenir i gestionar l'aplicació Stock & Cryptocurrency Tracker. L'aplicació és una solució client-side construïda amb HTML, CSS i JavaScript.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Requisits del Sistema</h2>
+            
+            <h3>Requisits de Maquinari</h3>
+            <ul>
+                <li>Qualsevol ordinador o servidor modern capaç d'executar un navegador web</li>
+                <li>Mínim 512MB RAM (recomanat 1GB+)</li>
+                <li>10MB d'espai disponible en disc per als fitxers de l'aplicació</li>
+            </ul>
+            
+            <h3>Requisits de Programari</h3>
+            <ul>
+                <li>Servidor web (Apache, Nginx o servidor HTTP simple)</li>
+                <li>Navegador web modern per a proves</li>
+                <li>Git (per al control de versions i actualitzacions)</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Instruccions d'Instal·lació</h2>
+            
+            <h3>Prerequisits</h3>
+            <pre><code># Instal·la un servidor web (exemple utilitzant Apache a Ubuntu/Debian)
+sudo apt update
+sudo apt install apache2
+
+# O utilitza http-server de Node.js per proves ràpides
+npm install -g http-server</code></pre>
+            
+            <h3>Passos de Desplegament</h3>
+            <ol>
+                <li><strong>Baixa l'Aplicació</strong>:
+                    <pre><code># Clona o descarrega el repositori
+git clone &lt;repository-url&gt;
+cd stock-crypto-tracker</code></pre>
+                </li>
+                
+                <li><strong>Copia els Fitxers al Directori del Servidor Web</strong>:
+                    <pre><code># Copia els fitxers al directori arrel del servidor web (ex: /var/www/html/)
+sudo cp -r ./* /var/www/html/
+
+# O per a proves locals, simplement posa els fitxers en una carpeta</code></pre>
+                </li>
+                
+                <li><strong>Estableix Permisos Apropiats</strong>:
+                    <pre><code># Assegura't que el servidor web pugui llegir els fitxers
+sudo chown -R www-data:www-data /var/www/html/
+sudo chmod -R 755 /var/www/html/</code></pre>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Executant l'Aplicació</h2>
+            
+            <h3>Proves Locals</h3>
+            <pre><code># Mètode 1: Utilitzant el servidor HTTP integrat de Python (si està disponible)
+python3 -m http.server 8000
+
+# Mètode 2: Utilitzant http-server de Node.js
+http-server
+
+# Mètode 3: Utilitzant Apache/Nginx (configura un virtual host si cal)</code></pre>
+            
+            <h3>Desplegament en Producció</h3>
+            <ol>
+                <li>Configura el teu servidor web:
+                    <pre><code># Exemple de configuració d'Apache
+&lt;VirtualHost *:80&gt;
+    DocumentRoot /var/www/html/
+    ServerName stocktracker.example.com
+    
+    &lt;Directory "/var/www/html/"&gt;
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</code></pre>
+                </li>
+                
+                <li>Reinicia el servidor web:
+                    <pre><code>sudo systemctl restart apache2  # Ubuntu/Debian
+sudo systemctl restart nginx    # CentOS/RHEL</code></pre>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Estructura de Fitxers</h2>
+            
+            <pre><code>stock-crypto-tracker/
+├── index.html          # Pàgina principal de l'aplicació
+├── styles.css          # Estil CSS
+├── script.js           # Funcionalitat JavaScript
+├── USER_GUIDE.md       # Documentació d'usuari
+└── ADMIN_GUIDE.md      # Documentació d'administrador</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>Opcions de Configuració</h2>
+            
+            <h3>Emmagatzematge al Navegador</h3>
+            <p>L'aplicació utilitza l'emmagatzematge local del navegador per persistir les alertes entre sessions. Això no requereix configuració al servidor.</p>
+            
+            <h3>Consideracions de Seguretat</h3>
+            <ul>
+                <li>Com que aquesta és una aplicació client-side, no hi ha preocupacions de seguretat al servidor</li>
+                <li>Tot el processament de dades es fa al navegador de l'usuari</li>
+                <li>No s'emmagatzena informació sensible als servidors</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Manteniment i Actualitzacions</h2>
+            
+            <h3>Tasques de Manteniment Regular</h3>
+            <ol>
+                <li><strong>Monitoratge del Rendiment de l'Aplicació</strong>:
+                    <pre><code># Comprova si el servidor web s'està executant
+sudo systemctl status apache2
+
+# Monitoritza l'espai en disc
+df -h</code></pre>
+                </li>
+                
+                <li><strong>Actualització dels Fitxers de l'Aplicació</strong>:
+                    <pre><code>git pull origin main
+# O descarrega els fitxers actualitzats manualment</code></pre>
+                </li>
+                
+                <li><strong>Còpia de Seguretat de la Configuració</strong> (si n'hi ha):
+                    <pre><code># No calen fitxers de configuració per a aquesta aplicació</code></pre>
+                </li>
+            </ol>
+            
+            <h3>Actualització de l'Aplicació</h3>
+            <pre><code># Navega al directori de l'aplicació
+cd /var/www/html/
+
+# Obtén la última versió del repositori
+git pull origin main
+
+# O reemplaça els fitxers manualment amb versions actualitzades</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>Monitoratge i Registre</h2>
+            
+            <h3>Monitoratge de l'Aplicació</h3>
+            <p>Com que aquesta és una aplicació client-side:</p>
+            <ul>
+                <li>No hi ha registres al servidor per monitorar</li>
+                <li>Els interaccions d'usuari poden ser seguides mitjançant analítiques del navegador si s'integren</li>
+                <li>El monitoratge de rendiment hauria de centrar-se en el rendiment del servidor web</li>
+            </ul>
+            
+            <h3>Optimització del Rendiment</h3>
+            <ol>
+                <li>Assegura't que el servidor web estigui configurat per l'entrega de fitxers estàtics</li>
+                <li>Considera habilitar la compressió GZIP per als fitxers CSS/JS</li>
+                <li>Monitoritza la consola del navegador per a errors de JavaScript</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Solucionador de Problemes</h2>
+            
+            <h3>Problemes Comuns i Solucions</h3>
+            
+            <h4>1. Aplicació No S'Està Carregant</h4>
+            <p><strong>Símptomes</strong>: Pàgina en blanc o error "Fitxer no trobat"</p>
+            <p><strong>Solució</strong>:</p>
+            <pre><code># Comprova els permisos dels fitxers
+ls -la /var/www/html/
+
+# Verifica que els fitxers existeixin
+ls -la /var/www/html/index.html
+
+# Reinicia el servidor web
+sudo systemctl restart apache2</code></pre>
+            
+            <h4>2. JavaScript No Funciona</h4>
+            <p><strong>Símptomes</strong>: Cap actualització en viu, alertes no funcionant</p>
+            <p><strong>Solució</strong>:</p>
+            <ul>
+                <li>Comprova la consola del navegador per a errors de JavaScript</li>
+                <li>Assegura't que JavaScript estigui habilitat al navegador</li>
+                <li>Verifica que tots els fitxers s'hagin copiat correctament i siguin accessibles</li>
+            </ul>
+            
+            <h4>3. Les Alertes No Persisteixen</h4>
+            <p><strong>Símptomes</strong>: Les alertes desapareixen després de refrescar la pàgina</p>
+            <p><strong>Solució</strong>:</p>
+            <pre><code># Comprova si l'emmagatzematge local està habilitat al navegador
+# Aquest és un problema a nivell de navegador, no d'aplicació</code></pre>
+        </div>
+        
+        <div class="section">
+            <h2>Millors Pràctiques de Seguretat</h2>
+            
+            <h3>Per a la Seguretat del Servidor Web</h3>
+            <ol>
+                <li><strong>Mantingues el Servidor Web Actualitzat</strong>:
+                    <pre><code>sudo apt update &amp;&amp; sudo apt upgrade</code></pre>
+                </li>
+                
+                <li><strong>Securitza els Permisos dels Fitxers</strong>:
+                    <pre><code># Fes que els fitxers siguin llegibles però no executables
+sudo chmod 644 /var/www/html/*.html
+sudo chmod 644 /var/www/html/*.css
+sudo chmod 644 /var/www/html/*.js</code></pre>
+                </li>
+                
+                <li><strong>Habilita HTTPS</strong> (recomanat):
+                    <pre><code># Instal·la un certificat Let's Encrypt
+sudo apt install certbot python3-certbot-apache
+sudo certbot --apache -d stocktracker.example.com</code></pre>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Còpia de Seguretat i Recuperació</h2>
+            
+            <h3>Backup de l'Aplicació</h3>
+            <pre><code># Crea una còpia de seguretat dels fitxers de l'aplicació
+tar -czf stock-tracker-backup-$(date +%Y%m%d).tar.gz /var/www/html/
+
+# O utilitzant rsync
+rsync -avz /var/www/html/ backup-location/</code></pre>
+            
+            <h3>Procés de Recuperació</h3>
+            <ol>
+                <li>Copia els fitxers de còpia de seguretat al directori del servidor web</li>
+                <li>Restaura els permisos de fitxers apropiats</li>
+                <li>Reinicia el servidor web si cal</li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Ajustament del Rendiment</h2>
+            
+            <h3>Optimització del Servidor Web</h3>
+            <ol>
+                <li><strong>Habilita la Compressió</strong>:
+                    <pre><code># Afegeix a la configuració d'Apache
+&lt;IfModule mod_deflate.c&gt;
+    AddOutputFilterByType DEFLATE text/css application/javascript
+&lt;/IfModule&gt;</code></pre>
+                </li>
+                
+                <li><strong>Posa en Caché els Fitxers Estàtics</strong>:
+                    <pre><code># Afegeix a la configuració d'Apache
+&lt;FilesMatch "\.(css|js)$"&gt;
+    Header set Cache-Control "max-age=31536000, public"
+&lt;/FilesMatch&gt;</code></pre>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Millores Futures per a Administradors</h2>
+            
+            <h3>Capacitats d'Integració</h3>
+            <ol>
+                <li><strong>Integració d'API</strong>:
+                    <ul>
+                        <li>Connecta a fonts de dades financeres reals</li>
+                        <li>Implementa autenticació i crides API segures</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Integració de Base de Dades</strong>:
+                    <ul>
+                        <li>Emmagatzema preferències d'usuari a la base de dades</li>
+                        <li>Implementa gestió de comptes d'usuari</li>
+                        <li>Afegeix funcionalitats d'anàlisi i informes</li>
+                    </ul>
+                </li>
+                
+                <li><strong>Sistemes de Notificació</strong>:
+                    <ul>
+                        <li>Integracions d'alertes per correu electrònic/SMS</li>
+                        <li>Capacitats de notificacions push</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="section">
+            <h2>Conformitat i Consideracions Legals</h2>
+            
+            <h3>Privadesa de Dades</h3>
+            <ul>
+                <li>No s'acullen ni s'emmagatzenen dades personals als servidors</li>
+                <li>Tot el processament de dades es fa al navegador de l'usuari</li>
+                <li>No hi ha registre de les activitats d'usuari al servidor</li>
+            </ul>
+            
+            <h3>Condicions d'Ús</h3>
+            <ul>
+                <li>L'aplicació es proporciona "tal com és"</li>
+                <li>No hi ha garantia per a la precisió de les dades o funcionalitat</li>
+                <li>Els usuaris són responsables de les seves pròpies decisions d'inversió</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>Informació de Contacte</h2>
+            
+            <p>Per a suport i preguntes relacionades amb aquesta aplicació, contacta:</p>
+            
+            <p>[La Teva Organització]<br>
+            Correu electrònic: admin@stocktracker.example.com</p>
+        </div>
+    </div>
+</body>
+</html>
