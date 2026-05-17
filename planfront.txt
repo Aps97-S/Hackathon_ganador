@@ -1,0 +1,39 @@
+
+Plan Frontend
+1. Estructuración del Proyecto
+- 
+Crear una estructura básica de carpetas y archivos necesarios:
+src/
+components/
+styles/
+pages/
+utils/
+.gitignore
+package.json
+2. Configuración Inicial
+- 
+Configurar el archivo package.json con las dependencias necesarias.
+- 
+Crear un archivo .env para variables de entorno.
+3. Creación de Componentes Básicos
+- 
+Desarrollar los componentes principales:
+- 
+Dashboard.js
+- 
+HistoricalDataView.js
+- 
+ActivitySummary.js
+4. Desarrollo de Vistas Detalladas
+- 
+Crear vistas específicas para cada funcionalidad:
+src/pages/
+Dashboard.js
+HistoricalData.js
+ActivityReport.js
+5. Integración con Backend
+- 
+Establecer endpoints para comunicación con el backend.
+6. Pruebas Unitarias
+- 
+Crear pruebas unitarias utilizando Jest o Mocha.

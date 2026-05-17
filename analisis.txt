@@ -1,0 +1,89 @@
+# Análisis Detallado del Proyecto
+
+## 1. Configuración
+**Ruta:** projecte/backend/src/config/externalApi.js
+**Contenido:** Clase ApiClient que gestiona las llamadas a la API externa CoinGecko
+- Implementa lógica de retry con configuración de intentos máximos y delay
+- Gestiona timeouts con AbortController para prevenir requests colgados
+- Maneja errores HTTP y errores de red
+- Lee configuraciones desde variables de entorno (BASE_URL, API_KEY, TIMEOUT, RETRIES, etc.)
+- Utiliza fetch API nativa en lugar de axios como se especifica en el README
+
+## 2. Servicios
+**Ruta:** projecte/backend/src/services/financialApi.js
+**Contenido:** Clase FinancialService con métodos para interactuar con la API CoinGecko
+- getPrice(symbol): Obtiene precio actual de una criptomoneda
+- getMultiplePrices(symbols): Obtiene precios de múltiples criptomonedas
+- getPriceChange(symbol): Obtiene cambio de precio en 24h
+- getPriceHistory(symbol, days): Obtiene datos históricos (últimos días)
+- getTopCrypto(limit): Obtiene las top criptomonedas por capitalización
+- getCoinDetails(symbol): Obtiene información detallada de una criptomoneda
+- getMarketData(symbols): Obtiene datos de mercado para múltiples criptomonedas
+- getPriceHistoryWithInterval(symbol, days, interval): Obtiene datos históricos con intervalo específico (hourly/daily)
+- getExchangeRates(vsCurrencies): Obtiene monedas soportadas para cambio
+
+## 3. Controladores
+**Ruta:** projecte/backend/src/controllers/marketController.js
+**Contenido:** Controladores para manejar las peticiones HTTP y llamar a los servicios
+- getPrice: Maneja GET /api/market/price/:symbol
+- getMultiplePrices: Maneja GET /api/market/prices/:symbols
+- getPriceChange: Maneja GET /api/market/price-change/:symbol
+- getHistory: Maneja GET /api/market/history/:symbol
+- getHistoryWithInterval: Maneja GET /api/market/history/:symbol/interval
+- getTopCryptos: Maneja GET /api/market/top
+- getCoinDetails: Maneja GET /api/market/details/:symbol
+- getMarketData: Maneja GET /api/market/data/:symbols
+
+## 4. Rutas
+**Ruta:** projecte/backend/src/routes/market.js
+**Contenido:** Definición de rutas REST para el API de mercado
+- Define todas las rutas mencionadas en el README.md
+- Aplica middleware de caché a cada ruta
+- Conecta cada ruta con su controlador correspondiente
+
+## 5. Middleware
+**Ruta:** projecte/backend/src/middleware/cache.js
+**Contenido:** Middleware para implementar caching de respuestas
+- Implementación básica en memoria (Map)
+- Configurable TTL (Time To Live) desde variables de entorno
+- Evita llamadas repetidas a la misma URL durante el periodo de cache
+
+## 6. Utilidades
+**Ruta:** projecte/backend/src/utils/apiResponse.js
+**Contenido:** Clase para formatear respuestas de la API
+- success(data, message): Crea respuesta exitosa con datos y mensaje
+- error(message, code, details): Crea respuesta de error con código y detalles
+- paginate(data, pagination): Crea respuesta paginada
+
+## 7. Modelos
+**Ruta:** projecte/backend/src/models/
+**Contenido:** Modelos de base de datos para almacenamiento persistente de datos financieros
+- alertas.js: Modelo para alertas de precios
+- divisas.js: Modelo para monedas/currencies
+- historico.js: Modelo para historial de precios
+- simulaciones.js: Modelo para simulaciones de trading
+- usuarios.js: Modelo para usuarios del sistema
+- index.js: Exporta todos los modelos
+
+## 8. Pruebas
+**Ruta:** projecte/backend/tests/financialApiComplete.test.js
+**Contenido:** Test completo para todas las funcionalidades implementadas
+- Prueba de todos los métodos del servicio FinancialService
+- Verificación de respuestas correctas y manejo de errores
+- Ejecución de tests para verificar el funcionamiento completo
+
+## 9. Archivos Principales
+**Ruta:** projecte/backend/server.js
+**Contenido:** Punto de entrada del servidor Express
+- Configura middleware básico (json, urlencoded)
+- Configura CORS para acceso desde cualquier origen
+- Inicializa la base de datos
+- Define ruta healthcheck /health
+- Inicia el servidor en el puerto especificado
+
+**Ruta:** projecte/.env
+**Contenido:** Variables de entorno configuradas
+- Puerto del servidor (3001)
+- Base URL de CoinGecko API
+- Configuración de base de datos
+- Parámetros de configuración de la API externa (timeout, retries, cache TTL)
