@@ -27,10 +27,12 @@ class FinancialService {
       }
       
       return {
+      item: {
         symbol,
-        price: response[symbol],
-        timestamp: new Date().toISOString(),
-        success: true
+        usd: response[symbol].usd,
+        eur: response[symbol].eur,
+        usd_24h_change: response[symbol].usd_24h_change || 0
+      }
       };
     } catch (error) {
       console.error(`Error fetching price for ${symbol}:`, error);
@@ -59,21 +61,14 @@ class FinancialService {
       }
       
       // Normalize response to consistent structure
-      const normalizedResponse = {};
-      for (const [symbol, data] of Object.entries(response)) {
-        normalizedResponse[symbol] = {
-          usd: data.usd,
-          eur: data.eur,
-          usd_24h_change: data.usd_24h_change || 0
-        };
-      }
+    const items = Object.entries(response).map(([symbol, data]) => ({
+      symbol,
+      usd: data.usd,
+      eur: data.eur,
+      usd_24h_change: data.usd_24h_change || 0
+    }));
       
-      return {
-        symbols: symbols.split(','),
-        prices: normalizedResponse,
-        timestamp: new Date().toISOString(),
-        success: true
-      };
+      return { items };
     } catch (error) {
       console.error(`Error fetching multiple prices for ${symbols}:`, error);
       throw error;
@@ -103,11 +98,11 @@ class FinancialService {
       const priceData = response[symbol];
       
       return {
-        symbol,
+        item: {
+         symbol,
         usd: priceData?.usd || 0,
         usd_24h_change: priceData?.usd_24h_change || 0,
-        timestamp: new Date().toISOString(),
-        success: true
+        }
       };
     } catch (error) {
       console.error(`Error fetching price change for ${symbol}:`, error);
@@ -141,10 +136,7 @@ class FinancialService {
       }
       
       return {
-        symbol,
-        prices: response.prices,
-        timestamps: response.prices.map(price => new Date(price[0]).toISOString()),
-        success: true
+        series: response.prices,
       };
     } catch (error) {
       console.error(`Error fetching history for ${symbol}:`, error);
@@ -171,21 +163,16 @@ class FinancialService {
       if (!response || !Array.isArray(response)) {
         throw new Error('No top cryptocurrencies data received from API');
       }
-      
-      return {
-        limit,
-        cryptocurrencies: response.map(coin => ({
-          id: coin.id,
-          symbol: coin.symbol,
-          name: coin.name,
-          current_price: coin.current_price,
-          price_change_percentage_24h: coin.price_change_percentage_24h,
-          market_cap: coin.market_cap,
-          total_volume: coin.total_volume,
-        })),
-        timestamp: new Date().toISOString(),
-        success: true
-      };
+    const items = response.map(coin => ({
+      id: coin.id,
+      symbol: coin.symbol,
+      name: coin.name,
+      usd: coin.current_price,
+      change_24h: coin.price_change_percentage_24h,
+      market_cap: coin.market_cap,
+      volume: coin.total_volume
+    }));
+    return { items };
     } catch (error) {
       console.error('Error fetching top cryptocurrencies:', error);
       throw error;
@@ -213,6 +200,7 @@ class FinancialService {
       }
       
       return {
+        item:{
         id: response.id,
         symbol: response.symbol,
         name: response.name,
@@ -220,8 +208,7 @@ class FinancialService {
         market_cap: response.market_data?.market_cap?.usd || 0,
         total_volume: response.market_data?.total_volume?.usd || 0,
         price_change_percentage_24h: response.market_data?.price_change_percentage_24h || 0,
-        timestamp: new Date().toISOString(),
-        success: true
+        }
       };
     } catch (error) {
       console.error(`Error fetching coin details for ${symbol}:`, error);
@@ -249,20 +236,17 @@ class FinancialService {
         throw new Error('No market data received from API');
       }
       
-      return {
-        symbols: symbols.split(','),
-        cryptocurrencies: response.map(coin => ({
-          id: coin.id,
-          symbol: coin.symbol,
-          name: coin.name,
-          current_price: coin.current_price,
-          price_change_percentage_24h: coin.price_change_percentage_24h,
-          market_cap: coin.market_cap,
-          total_volume: coin.total_volume,
-        })),
-        timestamp: new Date().toISOString(),
-        success: true
-      };
+    return {
+      items: response.map(coin => ({
+        id: coin.id,
+        symbol: coin.symbol,
+        name: coin.name,
+        usd: coin.current_price,
+        change_24h: coin.price_change_percentage_24h,
+        market_cap: coin.market_cap,
+        volume: coin.total_volume
+      }))
+    };
     } catch (error) {
       console.error(`Error fetching market data for ${symbols}:`, error);
       throw error;
@@ -300,11 +284,8 @@ class FinancialService {
       }
       
       return {
-        symbol,
-        prices: response.prices,
-        timestamps: response.prices.map(price => new Date(price[0]).toISOString()),
+        series: response.prices,
         interval,
-        success: true
       };
     } catch (error) {
       console.error(`Error fetching history with interval for ${symbol}:`, error);
@@ -331,9 +312,7 @@ class FinancialService {
       // For this implementation we'll return the supported currencies
       // In a real implementation, you might want to fetch exchange rates for specific pairs
       return {
-        vs_currencies: response,
-        timestamp: new Date().toISOString(),
-        success: true
+        items: response,
       };
     } catch (error) {
       console.error('Error fetching exchange rates:', error);
