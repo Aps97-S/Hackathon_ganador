@@ -8,7 +8,14 @@ const Alertas = sequelize.define('Alertas', {
     primaryKey: true,
     autoIncrement: true
   },
-
+  usuario_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  divisa_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -25,14 +32,14 @@ const Alertas = sequelize.define('Alertas', {
     type: DataTypes.FLOAT,
     allowNull: true
   },
-  ultima_alerta: {
-    type: DataTypes.DATE,
-    allowNull: true
+  estado: {
+    type: DataTypes.ENUM("active", "triggered", "disabled"),
+    defaultValue: "active"
   },
 
-  activa: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: true
+  activada_en: {
+    type: DataTypes.DATE,
+    allowNull: true
   }
 }, {
   tableName: 'alertas',
