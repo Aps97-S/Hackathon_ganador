@@ -1,6 +1,6 @@
 // controllers/marketController.js
 
-const { FinancialService } = require('../services/financialApi');
+const  FinancialService  = require('../services/financialApi');
 const ApiResponse = require('../utils/apiResponse');
 
 exports.getPrice = async (req, res) => {
