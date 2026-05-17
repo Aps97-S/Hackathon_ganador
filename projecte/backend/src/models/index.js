@@ -1,8 +1,5 @@
 const Alertas = require('./Alertas');
 const Simulaciones = require('./Simulaciones');
-const PriceHistory = require('./PriceHistory');
-const TopCrypto = require('./TopCrypto');
-
 const Usuarios = require('./usuarios');
 const Historico=require('./historico');
 const Divisas= require('./divisas');
@@ -49,8 +46,5 @@ Historico.belongsTo(Divisas, {
 //Lo mismo XD el historico trabaja sobre 1 sola divisa,pero una divisa se guarda varias veces en el historico
 
 
-const PriceHistory = require('./PriceHistory');
-const TopCrypto = require('./TopCrypto');
-
-module.exports = { Alertas, Simulaciones, PriceHistory, TopCrypto,Historico,Usuarios,Divisas };
+module.exports = { Alertas, Simulaciones,Historico,Usuarios,Divisas };
 
