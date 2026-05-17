@@ -15,7 +15,7 @@ class ApiClient {
    * @returns {Promise<Object>} API response
    */
   async fetch(endpoint, options = {}) {
-    const url = `${this.baseUrl}${endpoint}`;
+    let url = `${this.baseUrl}${endpoint}`;
     
     // Add API key to query parameters if it exists
     if (this.apiKey) {
