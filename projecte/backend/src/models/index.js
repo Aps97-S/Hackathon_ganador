@@ -1,5 +1,7 @@
 const Alertas = require('./Alertas');
 const Simulaciones = require('./Simulaciones');
+const PriceHistory = require('./PriceHistory');
+const TopCrypto = require('./TopCrypto');
 
 const Usuarios = require('./usuarios');
 const Historico=require('./historico');
