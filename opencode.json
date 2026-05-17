@@ -1,0 +1,33 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
+  "small_model": "lm-studio-249/fluxiia.qwen_14b-tool_call_on_reasonin",
+  "provider": {
+    "lm-studio-110": {
+      "api": "openai",
+      "options": {
+        "apiKey": "lm-studio",
+        "baseURL": "http://192.168.0.110:1234/v1"
+      },
+      "models": {
+        "qwen/qwen3-coder-30b": {
+          "id": "qwen/qwen3-coder-30b",
+          "tool_call": true
+        }
+      }
+    },
+    "lm-studio-249": {
+      "api": "openai",
+      "options": {
+        "apiKey": "lm-studio",
+        "baseURL": "http://192.168.0.249:1234/v1"
+      },
+      "models": {
+        "fluxiia.qwen_14b-tool_call_on_reasonin": {
+          "id": "fluxiia.qwen_14b-tool_call_on_reasonin",
+          "tool_call": true
+        }
+      }
+    }
+  }
+}

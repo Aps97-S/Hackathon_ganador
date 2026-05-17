@@ -52,7 +52,13 @@ async function initDatabase() {
   try {
     await sequelize.authenticate();
     console.log("Conexión a DB OK");
-    require('../models');
+    const models = require('../models');
+    // Call associate for all models
+    Object.values(models).forEach(model => {
+      if (model.associate) {
+        model.associate(models);
+      }
+    });
     await sequelize.sync({ alter: true });
     console.log("Modelos sincronizados");
   } catch (err) {
