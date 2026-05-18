@@ -1,0 +1,122 @@
+.history-page {
+  background-color: var(--bg);
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.history-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.history-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.history-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.symbol {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.range-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.range-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.range-btn:hover {
+  background-color: var(--card-bg-hover);
+  color: var(--text-primary);
+}
+
+.range-btn.active {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.chart-container {
+  background-color: var(--card-bg);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom tooltip styling */
+.custom-tooltip {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  color: white;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip-date {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.tooltip-price {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .history-header h1 {
+    font-size: 2rem;
+  }
+  
+  .range-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .chart-container {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-content {
+    padding: 0.5rem;
+  }
+  
+  .history-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .range-selector {
+    gap: 0.25rem;
+  }
+  
+  .range-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
