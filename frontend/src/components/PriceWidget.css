@@ -1,0 +1,53 @@
+.price-widget {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  min-width: 180px;
+}
+
+.price-widget:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.price-widget-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.price-widget-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.price-widget-symbol {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.price-widget-price {
+  color: var(--text-primary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.price-widget-change {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.change-positive {
+  color: var(--green);
+}
+
+.change-negative {
+  color: var(--red);
+}
