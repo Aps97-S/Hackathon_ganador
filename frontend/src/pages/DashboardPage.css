@@ -1,0 +1,131 @@
+.dashboard {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dashboard-title {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ranking-table {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.ranking-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table th,
+.ranking-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.ranking-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ranking-table td {
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clickable-row:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.change-positive {
+  color: var(--green);
+}
+
+.change-negative {
+  color: var(--red);
+}
+
+.crypto-symbol {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.crypto-name {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ranking-table th:nth-child(5),
+  .ranking-table td:nth-child(5),
+  .ranking-table th:nth-child(6),
+  .ranking-table td:nth-child(6) {
+    display: none;
+  }
+  
+  .dashboard-content {
+    padding: 0 0.5rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ranking-table th:nth-child(2),
+  .ranking-table td:nth-child(2) {
+    display: none;
+  }
+  
+  .crypto-symbol {
+    margin-right: 0.25rem;
+  }
+  
+  .crypto-name {
+    display: none;
+  }
+}

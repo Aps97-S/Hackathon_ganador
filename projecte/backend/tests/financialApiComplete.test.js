@@ -14,79 +14,80 @@ async function runTests() {
     console.log('1. Testing current price fetch...');
     const currentPriceResult = await FinancialService.getPrice('bitcoin');
     console.log('✓ Current price fetch completed');
-    if (currentPriceResult.success) {
+    if (currentPriceResult && currentPriceResult.item) {
       console.log('  Result:', JSON.stringify(currentPriceResult, null, 2).substring(0, 100) + '...');
     } else {
-      console.log('  Error:', currentPriceResult.error.message);
+      console.log('  Error:', currentPriceResult);
     }
     
     console.log('\n2. Testing multiple prices fetch...');
     const multiplePricesResult = await FinancialService.getMultiplePrices('bitcoin,ethereum');
     console.log('✓ Multiple prices fetch completed');
-    if (multiplePricesResult.success) {
-      console.log('  Symbols:', multiplePricesResult.symbols.length);
+    if (multiplePricesResult && multiplePricesResult.items) {
+      console.log('  Symbols:', multiplePricesResult.items.length);
     } else {
-      console.log('  Error:', multiplePricesResult.error.message);
+      console.log('  Error:', multiplePricesResult);
     }
     
     console.log('\n3. Testing price change fetch...');
     const priceChangeResult = await FinancialService.getPriceChange('bitcoin');
     console.log('✓ Price change fetch completed');
-    if (priceChangeResult.success) {
-      console.log('  Price change:', priceChangeResult.usd_24h_change);
+    if (priceChangeResult && priceChangeResult.item) {
+      console.log('  Price change:', priceChangeResult.item.usd_24h_change);
     } else {
-      console.log('  Error:', priceChangeResult.error.message);
+      console.log('  Error:', priceChangeResult);
     }
     
     console.log('\n4. Testing historical data fetch...');
     const historicalResult = await FinancialService.getPriceHistory('bitcoin', 7);
     console.log('✓ Historical data fetch completed');
-    if (historicalResult.success) {
-      console.log('  Data points:', historicalResult.prices.length);
+    if (historicalResult && historicalResult.series) {
+      console.log('  Data points:', historicalResult.series.length);
     } else {
-      console.log('  Error:', historicalResult.error.message);
+      console.log('  Error:', historicalResult);
     }
     
     console.log('\n5. Testing historical data with interval...');
     const historicalIntervalResult = await FinancialService.getPriceHistoryWithInterval('bitcoin', 7, 'hourly');
     console.log('✓ Historical data with interval fetch completed');
-    if (historicalIntervalResult.success) {
-      console.log('  Data points:', historicalIntervalResult.prices.length);
+    if (historicalIntervalResult && historicalIntervalResult.series) {
+      console.log('  Data points:', historicalIntervalResult.series.length);
     } else {
-      console.log('  Error:', historicalIntervalResult.error.message);
+      console.log('  Error:', historicalIntervalResult);
     }
     
     console.log('\n6. Testing top cryptos fetch...');
     const topCryptosResult = await FinancialService.getTopCrypto(5);
     console.log('✓ Top cryptos fetch completed');
-    if (topCryptosResult.success) {
-      console.log('  Number of cryptos:', topCryptosResult.cryptocurrencies.length);
+    if (topCryptosResult && topCryptosResult.items) {
+      console.log('  Number of cryptos:', topCryptosResult.items.length);
     } else {
-      console.log('  Error:', topCryptosResult.error.message);
+      console.log('  Error:', topCryptosResult);
     }
     
     console.log('\n7. Testing coin details fetch...');
     const coinDetailsResult = await FinancialService.getCoinDetails('bitcoin');
     console.log('✓ Coin details fetch completed');
-    if (coinDetailsResult.success) {
-      console.log('  Coin name:', coinDetailsResult.name);
+    if (coinDetailsResult && coinDetailsResult.item) {
+      console.log('  Coin name:', coinDetailsResult.item.name);
     } else {
-      console.log('  Error:', coinDetailsResult.error.message);
+      console.log('  Error:', coinDetailsResult);
     }
     
     console.log('\n8. Testing market data fetch...');
     const marketDataResult = await FinancialService.getMarketData('bitcoin,ethereum');
     console.log('✓ Market data fetch completed');
-    if (marketDataResult.success) {
-      console.log('  Number of cryptos:', marketDataResult.cryptocurrencies.length);
+    if (marketDataResult && marketDataResult.items) {
+      console.log('  Number of cryptos:', marketDataResult.items.length);
     } else {
-      console.log('  Error:', marketDataResult.error.message);
+      console.log('  Error:', marketDataResult);
     }
     
     console.log('\n✅ All tests completed successfully!');
     
   } catch (error) {
     console.error('❌ Test execution failed:', error.message);
+    console.error('Stack:', error.stack);
     process.exit(1);
   }
 }

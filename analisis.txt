@@ -87,3 +87,19 @@
 - Base URL de CoinGecko API
 - Configuración de base de datos
 - Parámetros de configuración de la API externa (timeout, retries, cache TTL)
+
+## 10. Frontend Implementado
+**Ruta:** frontend/
+**Contenido:** 
+- Proyecto React + Vite con estructura completa:
+  - Componentes reutilizables (Navbar, PriceWidget, LoadingSkeleton, ErrorState)
+  - Páginas completas: Dashboard, Crypto Detail, History, Market Overview  
+  - Servicio API para consumir endpoints backend
+  - Estilos CSS con tema oscuro financiero
+  - Navegación React Router entre páginas
+  - Funcionalidades implementadas:
+    - Dashboard con tablas de ranking y destacados
+    - Página detallada de cripto con precios y estadísticas
+    - Vista histórica con gráficos interactivos (Recharts)
+    - Vista general del mercado en cuadrícula
+  - Componentes reutilizables para formato de moneda, porcentaje y market cap
